@@ -1,9 +1,12 @@
-import os
+import yaml
 from dotenv import load_dotenv
 
 load_dotenv()
 
-HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+with open("../env.yaml", "r") as file:
+    env = yaml.safe_load(file)
+
+HUGGINGFACE_TOKEN = env["huggingface"]["api_token"]
 
 MODEL_ID = "mistralai/Mistral-7B-Instruct-v0.1"
 MODEL_KWARGS = {
