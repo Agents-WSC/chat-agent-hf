@@ -1,12 +1,9 @@
 import yaml
-from dotenv import load_dotenv
 
-load_dotenv()
+with open("env.yaml", "r") as f:
+    config = yaml.safe_load(f)
 
-with open("../env.yaml", "r") as file:
-    env = yaml.safe_load(file)
-
-HUGGINGFACE_TOKEN = env["huggingface"]["api_token"]
+HUGGINGFACE_TOKEN = config["huggingface"]["api_token"]
 
 MODEL_ID = "mistralai/Mistral-7B-Instruct-v0.1"
 MODEL_KWARGS = {
